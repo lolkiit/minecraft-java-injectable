@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{55674813-d3f8-4478-b3b7-d1b66e886cf5}</ProjectGuid>
+    <RootNamespace>mapper</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\bin\</OutDir>
+    <IntDir>..\bin\obj\mapper\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>.\src;.\thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>.\thirdparty\jdk\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>jvm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\address.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\crashlog.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\win64\exception.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\win64\parser.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\win64\stacktrace.cpp" />
+    <ClCompile Include="thirdparty\crashlog\src\win64\symbols.cpp" />
+    <ClCompile Include="thirdparty\minhook\src\buffer.c" />
+    <ClCompile Include="thirdparty\minhook\src\hde\hde32.c" />
+    <ClCompile Include="thirdparty\minhook\src\hde\hde64.c" />
+    <ClCompile Include="thirdparty\minhook\src\hook.c" />
+    <ClCompile Include="thirdparty\minhook\src\trampoline.c" />
+    <ClCompile Include="thirdparty\miniz\miniz.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\common\data.h" />
+    <ClInclude Include="src\common\string_obfuscation.h" />
+    <ClInclude Include="src\core\class_parser.h" />
+    <ClInclude Include="src\core\jar_loader.h" />
+    <ClInclude Include="src\handler\console.h" />
+    <ClInclude Include="src\handler\exception.h" />
+    <ClInclude Include="src\handler\hook.h" />
+    <ClInclude Include="src\handler\jni.h" />
+    <ClInclude Include="thirdparty\crashlog\include\address.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\crashlog.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\exception.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\win64\exception.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\win64\parser.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\win64\stacktrace.hpp" />
+    <ClInclude Include="thirdparty\crashlog\include\win64\symbols.hpp" />
+    <ClInclude Include="thirdparty\jdk\include\classfile_constants.h" />
+    <ClInclude Include="thirdparty\jdk\include\jawt.h" />
+    <ClInclude Include="thirdparty\jdk\include\jawt_md.h" />
+    <ClInclude Include="thirdparty\jdk\include\jdwpTransport.h" />
+    <ClInclude Include="thirdparty\jdk\include\jni.h" />
+    <ClInclude Include="thirdparty\jdk\include\jni_md.h" />
+    <ClInclude Include="thirdparty\jdk\include\jvmti.h" />
+    <ClInclude Include="thirdparty\jdk\include\jvmticmlr.h" />
+    <ClInclude Include="thirdparty\minhook\include\MinHook.h" />
+    <ClInclude Include="thirdparty\minhook\src\buffer.h" />
+    <ClInclude Include="thirdparty\minhook\src\hde\hde32.h" />
+    <ClInclude Include="thirdparty\minhook\src\hde\hde64.h" />
+    <ClInclude Include="thirdparty\minhook\src\hde\pstdint.h" />
+    <ClInclude Include="thirdparty\minhook\src\hde\table32.h" />
+    <ClInclude Include="thirdparty\minhook\src\hde\table64.h" />
+    <ClInclude Include="thirdparty\minhook\src\trampoline.h" />
+    <ClInclude Include="thirdparty\miniz\miniz.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="thirdparty\jdk\lib\jawt.lib" />
+    <Library Include="thirdparty\jdk\lib\jvm.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

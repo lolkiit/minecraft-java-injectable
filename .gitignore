@@ -1,32 +1,84 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.db
+*.opendb
+*.ipch
+*.aps
 *.pch
+*.obj
+*.ilk
+*.log
+*.sdf
+*.opensdf
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
+*.res
+*.manifest
+*.intermediate.manifest
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Build outputs
+bin/
+obj/
+x64/
+x86/
+Debug/
+Release/
 *.exe
-*.out
-*.app
+*.dll
+*.lib
+!libs/*.lib
+!thirdparty/**/*.lib
+
+# Java
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+!libs/*.jar
+.gradle/
+build/
+target/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Generated files
+java/build/
+cpp/mapper/src/jar_data.h
+!cpp/mapper/src/jar_data.h
+
+# Logs
+*.log
+crash_*.log
+
+# Gradle
+.gradle/
+!gradle-wrapper.jar

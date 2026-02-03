@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'com.nexus'
+version = '1.0.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "minecraft"
+        url = "https://libraries.minecraft.net/"
+    }
+}
+
+dependencies {
+}
+
+// Disable regular jar task since we only use shadowJar
+jar {
+    enabled = false
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    archiveBaseName.set('nexus-client')
+    archiveVersion.set(version)
+    
+    manifest {
+        attributes(
+            'Main-Class': 'com.nexus.client.injection.EntryPoint',
+            'Implementation-Title': 'Nexus Client',
+            'Implementation-Version': version
+        )
+    }
+    
+    // Exclude signature files
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    
+    minimize()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+task buildJar(type: Copy) {
+    dependsOn shadowJar
+    from(shadowJar.outputs.files)
+    into file("${projectDir}/build/output")
+    rename { String fileName ->
+        'nexus-client.jar'
+    }
+}
+
+build.dependsOn buildJar
